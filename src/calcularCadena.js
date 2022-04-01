@@ -1,17 +1,29 @@
 function sumar(cadena) {
-  let suma = 0;
-  /*if(cadena[0] == "/")
-    {
-        let del =cadena.split(/[[\s]+/);
-        var delimitador = del.slice(0,-1);;
-        del.
-    }*/
-  let numeros = cadena.split(/[,-]+/);
-  /*delimitador = numeros[1].slice(0,-1);*/
+  let total = 0;
+  let delimitadores = "-|,";
+  if (tieneDelimitador(cadena)) {
+    const delimitador = obtenerDelimitador(cadena);
+    delimitadores += "|" + delimitador;
+    cadena = quitarCabecera(cadena);
+  }
+
+  let numeros = cadena.split(new RegExp(delimitadores));
 
   for (var i = 0; i < numeros.length; i++) {
-    suma += Number(numeros[i]);
+    total += Number(numeros[i]);
   }
-  return suma;
+  return total;
+}
+
+function quitarCabecera(cadena) {
+  return cadena.substring(5);
+}
+
+function tieneDelimitador(cadena) {
+  return cadena.startsWith("//[");
+}
+
+function obtenerDelimitador(cadena) {
+  return cadena[3];
 }
 export default sumar;
