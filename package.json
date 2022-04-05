@@ -6,8 +6,8 @@
   "scripts": {
     "start": "parcel index.html",
     "build": "parcel build index.html",
-    "test": "jest --watch",
-    "test-once": "jest --verbose"
+    "test": "jest --watch --verbose --coverage",
+    "test-once": "jest --verbose --coverage"
   },
   "author": "Israel Antezana R.",
   "license": "ISC",
